@@ -15,5 +15,3 @@ function init() {
 }
 
 init();
-
-canvasManager.brushALine();
