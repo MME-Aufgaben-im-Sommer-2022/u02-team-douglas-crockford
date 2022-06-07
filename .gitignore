@@ -1,0 +1,5 @@
+# local node dependencies
+node_modules
+
+# VS Code
+.vscode

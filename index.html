@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Assistant</title>
+    <link rel="stylesheet" href="resources/css/styles.css">
+    <link rel="stylesheet" href="vendors/fontello/css/video-assistant.css">
+</head>
+
+<body>
+    <h1>Video Assistant</h1>
+        <div id="info">
+            Öffnen Sie die Video-Datei mit dem aufgezeichneten Spiel und spielen Sie es ab. Wenn Sie das Spiel pausieren, können Sie die Werkzeuge auf der linken Seite verwenden, um spielentscheidende Situationen direkt im Bild zu markieren.
+        </div>
+    <div id="ui">
+        <div id="player">
+            <video class="video-layer">
+            </video>
+            <canvas class="video-layer"></canvas>
+            <div id="time">00:00</div>
+            <div id="controls">
+                <span class="icon play paused"></i></span>
+                <input class="seekbar" value="0" min="0" max="1000" type="range">
+                <span class="icon file"></span>
+                <input class="upload" type="file">
+            </div>
+        </div>
+        <ul id="menu" class="deactivated">
+            <li class="icon draw active"></li>
+            <li class="icon erase"></li>
+            <li class="icon visibility"></li>
+            <li class="icon undo"></li>
+            <li class="icon clear"></li>
+        </ul>
+    </div>
+    </div>
+    <script type="module" src="resources/js/index.js"></script>
+</body>
+
+</html>

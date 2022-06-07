@@ -1,0 +1,291 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("./fonts/Roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Medium";
+    src: url("./fonts/Roboto/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: 'video-assistant';
+    src: url('../../vendors/fontello/font/video-assistant.eot?38527377');
+    src: url('../../vendors/fontello/font/video-assistant.eot?38527377#iefix') format('embedded-opentype'),
+        url('../../vendors/fontello/font/video-assistant.woff2?38527377') format('woff2'),
+        url('../../vendors/fontello/font/video-assistant.woff?38527377') format('woff'),
+        url('../../vendors/fontello/font/video-assistant.ttf?38527377') format('truetype'),
+        url('../../vendors/fontello/font/video-assistant.svg?38527377#video-assistant') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    font-family: "video-assistant";
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+}
+
+
+html {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    background: #8EE4AF;
+    font-family: 'Roboto', sans-serif;
+    color: #EDF5E1;
+}
+
+h1 {
+    width: 98vw;
+    margin: 0;
+    padding: 1vw;
+    font-family: 'Roboto-Medium', sans-serif;
+    background-color: #379683;
+    border-style: solid;
+    border-width: 0 0 0.25vh 0;
+    border-color: #EDF5E1;
+    text-shadow: 0 0 0.5px #EEE;
+}
+
+h1:before {
+
+    margin: 0 1vh 0 0;
+    font-family: "video-assistant";
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    content: "\E808";
+}
+
+#info {
+    width: 65vw;
+    margin: 1vw auto;
+    padding: 0;
+    font-size: 2vh;
+    line-height: 3vh;
+    color: #379683;
+}
+
+#ui {
+    width: 65vw;
+    margin: 2vh auto;
+    padding: 0;
+    display: flex;
+}
+
+#player {
+    position: relative;
+    width: 55vw;
+    margin: 0;
+    padding: 0;
+}
+
+#player #time {
+    position: absolute;
+    padding: 0.5vh 2vh;
+    top: 0;
+    right: 0;
+    background-color: #FFF;
+    border-style: solid;
+    border-width: 0;
+    border-radius: 0 0 0 0.5vh;
+    font-size: 2vh;
+    color: #379683;
+}
+
+#player #time:after {
+    margin: 0 0 0 1vh;
+    font-family: "video-assistant";
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    content: "\E806";
+}
+
+#player .video-layer {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 54.8vw;
+    height: 31.8vw;
+    border-style: solid;
+    border-width: 0.1vw;
+}
+
+#player video {
+    border-color: #379683;
+    background-color: #379683;
+}
+
+#player canvas {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+#player #controls {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    top: 33vw;
+    left: 0;
+    width: 55vw;
+    height: 6vh;
+    background-color: #379683;
+}
+
+#player #controls .icon {
+    display: block;
+    width: 3.8vh;
+    height: 3.8vh;
+    padding: 0;
+    background-color: #EDF5E1;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 0.1vh;
+    border-color: #EDF5E1;
+    color: #379683;
+    font-size: 2vh;
+    line-height: 4vh;
+    text-align: center;
+}
+
+#player #controls .icon:hover {
+    cursor: pointer;
+    color: #FC4445;
+    border-color: #FC4445;
+}
+
+#player #controls .icon.play:before {
+    content: "\E801";
+}
+
+#player #controls .icon.play.paused:before {
+    content: "\E800";
+}
+
+#player #controls .icon.file {}
+
+#player #controls .icon.file:before {
+    content: "\E807";
+}
+
+#player #controls .upload {
+    display: none;
+}
+
+#player #controls .seekbar {
+    outline: none;
+}
+
+#player #controls .seekbar:focus {
+    outline: none;
+}
+
+#player #controls .seekbar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+}
+
+#player #controls .seekbar::-moz-range-thumb {
+    border: solid 1px #EDF5E1;
+    border-radius: 0;
+    height: 30px;
+    width: 8px;
+    background: #EDF5E1;
+    cursor: pointer;
+}
+
+#player #controls .seekbar::-moz-range-track {
+    height: 8px;
+    cursor: pointer;
+    background: #EDF5E1;
+    border: none;
+}
+
+#player #controls .seekbar::-moz-focus-outer {
+    border: 0;
+}
+
+#player #controls .seekbar {
+    -webkit-appearance: none;
+    display: block;
+    float: left;
+    width: 45vw;
+    height: 4vh;
+    margin: 0;
+    background: transparent;
+}
+
+#menu {
+    width: 10vw;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#menu.deactivated {
+    opacity: 0.5;
+}
+
+#menu li {
+    display: block;
+    width: 8vh;
+    height: 8vh;
+    margin: 1vh auto;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 0.5vh;
+    border-color: #379683;
+    background-color: #379683;
+    color: #EDF5E1;
+    font-size: 4vh;
+    line-height: 8vh;
+    text-align: center;
+}
+
+#menu li.active {
+    border-color: #EDF5E1;
+}
+
+#menu:not(.deactivated) li:hover {
+    cursor: pointer;
+    color: #FC4445;
+    border-color: #FC4445;
+}
+
+#menu li.visibility:before {
+    content: "\E809";
+}
+
+#menu li.visibility.hidden:before {
+    content: "\E810";
+}
+
+#menu li.draw:before {
+    content: "\E802";
+}
+
+#menu li.erase:before {
+    content: "\E803";
+}
+
+#menu li.erase {
+    margin-bottom: 5vh;
+}
+
+#menu li.undo:before {
+    content: "\E805";
+}
+
+#menu li.clear:before {
+    content: "\E804";
+}
+
+.hidden {
+    display: none !important;
+}
