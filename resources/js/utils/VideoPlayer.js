@@ -61,25 +61,29 @@ function syncTimeLabel(player) {
 
 class VideoPlayer extends Observable {
 
-    constructor(el) {
+    constructor(el, ui) {
         super();
         this.el = el;
+        this.ui = ui;
         initPlayer(this);
     }
 
     play() {
         this.playerEl.play();
         this.controls.playButton.classList.remove("paused");
+        this.ui.setUIActivity(false);
     }
 
     pause() {
         this.playerEl.pause();
         this.controls.playButton.classList.add("paused");
+        this.ui.setUIActivity(true);
     }
 
     stop() {
         this.pause();
         this.playerEl.currentTime = 0;
+        this.ui.setUIActivity(true);
     }
 
     setFile(file) {

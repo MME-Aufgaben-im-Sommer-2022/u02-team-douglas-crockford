@@ -6,7 +6,6 @@ const COLOR_WHITE = "rgb(255,255,255)";
 
 
 function initEvents(manager) {
-    //manager.annotationCanvas.canvas.addEventListener("mousemove", manager.onMouseMove().bind(manager));
     manager.annotationCanvas.canvas.addEventListener("mousemove", (event) => manager.onMouseMove(event));
     manager.annotationCanvas.canvas.addEventListener("mousedown", manager.onMouseDown.bind(manager));
     manager.annotationCanvas.canvas.addEventListener("mouseup", manager.onMouseUp.bind(manager));
@@ -15,11 +14,12 @@ function initEvents(manager) {
 
 class AnnotationManager extends Observable{
 
-    constructor(canvas) {
+    constructor(canvas, context) {
         super();
         this.annotationCanvas = canvas;
-        this.selectedTool = "brush";
+        this.selectedTool = "draw";
         this.active = false;
+        this.canvasVisibility = true;
         initEvents(this);
         this.oldX = 0;
         this.oldY = 0;
@@ -53,22 +53,44 @@ class AnnotationManager extends Observable{
         if(!this.active) {
             this.active = true;
         }
-        console.log("down");
     }
 
     onMouseUp() {
         if(this.active) {
             this.active = false;
         }
-        console.log("up");
     }
 
     onMouseOut() {
-
+        //What should happen if the mouse leaves the window?
     }
 
     performAction(oldX,oldY,newX,newY) {
-        this.annotationCanvas.drawLine(oldX,oldY,newX,newY, COLOR_WHITE);
+        if(this.selectedTool == "draw") {
+            this.annotationCanvas.drawLine(oldX,oldY,newX,newY, COLOR_WHITE);
+        }
+        if(this.selectedTool == "erase") {
+            this.annotationCanvas.eraseLine(oldX,oldY,newX,newY);
+        }
+    }
+
+    setActionType(type) {
+        this.selectedTool = type;
+    }
+
+    toggleCanvasVisibility() {
+        this.canvasVisibility = !this.canvasVisibility;
+        console.log(this.canvasVisibility);
+        if(this.canvasVisibility) {
+            this.annotationCanvas.canvas.style.visibility = "visible";
+        } else {
+            this.annotationCanvas.canvas.style.visibility = "hidden";
+        }
+
+    }
+
+    clearCanvas() {
+        this.annotationCanvas.context.clearRect(0, 0, this.annotationCanvas.canvas.width, this.annotationCanvas.canvas.height);
     }
 }
 
