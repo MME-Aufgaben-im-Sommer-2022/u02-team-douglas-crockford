@@ -2,6 +2,9 @@ import { Event, Observable } from "./utils/Observable.js";
 
 let oldX, oldY, newX, newY;
 
+let drawCollection = [],
+    index = -1;
+
 const COLOR_WHITE = "rgb(255,255,255)";
 
 
@@ -58,6 +61,11 @@ class AnnotationManager extends Observable{
     onMouseUp() {
         if(this.active) {
             this.active = false;
+
+            drawCollection.push(this.annotationCanvas.context
+                .getImageData(0, 0, this.annotationCanvas.canvas.width, this.annotationCanvas.canvas.height));
+            index += 1;
+            console.log(drawCollection);
         }
     }
 
@@ -91,6 +99,18 @@ class AnnotationManager extends Observable{
 
     clearCanvas() {
         this.annotationCanvas.context.clearRect(0, 0, this.annotationCanvas.canvas.width, this.annotationCanvas.canvas.height);
+        drawCollection = [];
+        index = -1;
+    }
+
+    undoAction() {
+        if (index <= 0) {
+            this.clearCanvas();
+        } else {
+            index -= 1;
+            drawCollection.pop();
+            this.annotationCanvas.context.putImageData(drawCollection[index], 0, 0);
+        }
     }
 }
 

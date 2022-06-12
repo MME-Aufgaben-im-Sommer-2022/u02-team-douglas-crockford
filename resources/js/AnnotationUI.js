@@ -69,7 +69,7 @@ class AnnotationUI {
     }
 
     onClickUndoButton() {
-        //TODO: Make Undo possible
+        this.manager.undoAction();
     }
 }
 
