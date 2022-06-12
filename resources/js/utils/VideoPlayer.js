@@ -95,7 +95,7 @@ class VideoPlayer extends Observable {
         let file = this.controls.uploadEl.files[0];
         console.log("File selected");
         console.log(file + " // " + file.type);
-        if (file && file.type === "video/ogg") {
+        if (file && file.type === "video/mp4") {
             console.log("Video received");
             this.setFile(file);
             this.stop();
