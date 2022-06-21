@@ -7,6 +7,7 @@ function initPlayer(player) {
 }
 
 function initControls(player) {
+    //Initializes the control ui html elements of the player
     player.controls = {
         uploadEl: player.el.querySelector(".upload"),
         seekbarEl: player.el.querySelector(".seekbar"),
@@ -17,6 +18,7 @@ function initControls(player) {
 }
 
 function initEvents(player) {
+    //Adds EventListener to the elements
     player.controls.uploadEl.addEventListener("change", player.onVideoFileSelected
         .bind(player));
     player.controls.seekbarEl.addEventListener("change", player.onSeekbarChanged.bind(
@@ -31,6 +33,7 @@ function initEvents(player) {
 }
 
 function syncVideoTime(player) {
+    //Synchronizes the video time of the player to the element displaying it
     let seekbarPositon = player.controls.seekbarEl.value / parseInt(player.controls
             .seekbarEl
             .max),
@@ -41,6 +44,7 @@ function syncVideoTime(player) {
 }
 
 function syncSeekbar(player) {
+    //Synchronizes the seekbar to the player
     let seekbarMax = parseInt(player.controls.seekbarEl.max),
         value = (seekbarMax / player.playerEl.duration) * player.playerEl.currentTime;
     player.controls.seekbarEl.value = value;
@@ -60,6 +64,8 @@ function syncTimeLabel(player) {
 }
 
 class VideoPlayer extends Observable {
+    //Handles the VideoPlayer with all its UI elements
+    //Closely modeled after the class for the AmbiPlayer Projekt: https://github.com/Multimedia-Engineering-Regensburg-Demos/MME-AmbiPlayer
 
     constructor(el, ui) {
         super();
@@ -92,11 +98,9 @@ class VideoPlayer extends Observable {
     }
 
     onVideoFileSelected() {
+        //Sets the file that should be displayed; accepted formats: ogg and mp4
         let file = this.controls.uploadEl.files[0];
-        console.log("File selected");
-        console.log(file + " // " + file.type);
-        if (file && file.type === "video/mp4") {
-            console.log("Video received");
+        if (file && (file.type === "video/mp4" || file.type === "video/ogg" )) {
             this.setFile(file);
             this.stop();
         }

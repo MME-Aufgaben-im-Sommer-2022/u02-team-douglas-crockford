@@ -2,6 +2,7 @@
 let drawButton, eraseButton, undoButton, visibilityButton, clearButton;
 
 function initButtonEvents(ui) {
+    //Gets the references to the html ui elements and adds the corresponding Eventlistener to them
     drawButton = document.querySelector(".icon.draw");
     drawButton.addEventListener("click", ui.onClickDrawButton.bind(ui));
     eraseButton = document.querySelector(".icon.erase");
@@ -16,6 +17,7 @@ function initButtonEvents(ui) {
 
 
 class AnnotationUI {
+    //Manages the UI inputs and applies the changes to the UI elements
 
     constructor(annotationManager) {
         this.manager = annotationManager;
@@ -24,6 +26,7 @@ class AnnotationUI {
     }
 
     setUIActivity(active) {
+        //Makes the UI elements active/inactive
         let menu = document.querySelector("#menu");
         this.activity = active;
         if (active) {
@@ -34,6 +37,7 @@ class AnnotationUI {
     }
 
     removeActiveButton() {
+        //Clears the visual selection from all buttons
         if(drawButton.classList.contains("active")) {
             drawButton.classList.remove("active");
         }
@@ -41,6 +45,9 @@ class AnnotationUI {
             eraseButton.classList.remove("active");
         }
     }
+
+    //The following methods hand the corresponding action over to the Annotation manager 
+    // and make visual changes (e.g. Selection Indicator) to the buttons if needed
 
     onClickDrawButton() {
         if(this.activity) {
