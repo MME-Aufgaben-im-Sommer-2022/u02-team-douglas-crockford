@@ -215,9 +215,9 @@ h1:before {
     -webkit-appearance: none;
     display: block;
     float: left;
-    width: 45vw;
-    height: 4vh;
-    margin: 0;
+    width: 500px;
+    height: 40px;
+    margin: 5px 0 0 10px;
     background: transparent;
 }
 
